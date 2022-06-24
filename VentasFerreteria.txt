@@ -1,0 +1,4 @@
+352	12	thinner 1 ltr.	154.52	15	5	2022
+7	307	destornillador phili	702.19	7	5	2022
+83	271	papel de lija fina	18.60 12	5	2022
+352	5	pinza punta fina	1009.08	14	5	2022
