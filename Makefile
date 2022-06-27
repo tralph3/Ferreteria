@@ -1,2 +1,2 @@
 build:
-	g++ -O2 -std=c++11 -o main.o *.cpp
+	g++ -O2 -Wall -std=c++11 -o main.o *.cpp

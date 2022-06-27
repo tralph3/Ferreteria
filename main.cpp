@@ -63,14 +63,15 @@ void lista_3(std::vector<Vendedor>& vendedores) {
 
 int main()
 {
-    const int MAX_REGS = 800;
-    const int MAX_VENS = 100;
-
     std::vector<Vendedor> vendedores;
     leer_ventas(vendedores, "./VentasFerreteria.txt");
 
     lista_1(vendedores);
+    std::cout << std::endl;
+    std::cout << std::endl;
     lista_2(vendedores);
+    std::cout << std::endl;
+    std::cout << std::endl;
     lista_3(vendedores);
 
     return 0;

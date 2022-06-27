@@ -89,7 +89,6 @@ void leer_y_registrar_venta(std::string linea, std::vector<Vendedor>& vendedores
 
 void leer_ventas(std::vector<Vendedor>& vendedores, std::string nombre) {
     std::string linea;
-    char separador = '\t';
 
     std::ifstream archivo(nombre);
     while(getline(archivo, linea)) {
