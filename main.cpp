@@ -1,40 +1,67 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include "structs.h"
+#include <bits/stdc++.h>
 #include "utils.h"
+#include "vendedor.h"
+#include "venta.h"
 
-Venta leer_una_venta(std::string linea) {
+void leer_y_registrar_venta(std::string linea, std::vector<Vendedor>& vendedores) {
     std::vector<std::string> factura;
     split_string(linea, factura, '\t');
 
-    Fecha* fecha = new Fecha;
-    fecha->dia = string_to_int(factura[4]);
-    fecha->mes = string_to_int(factura[5]);
-    fecha->ano = string_to_int(factura[6]);
+    Fecha fecha;
+    fecha.dia = string_to_int(factura[4]);
+    fecha.mes = string_to_int(factura[5]);
+    fecha.ano = string_to_int(factura[6]);
 
-    Venta* venta = new Venta;
-    venta->codigo = string_to_int(factura[0]);
-    venta->cantidad = string_to_int(factura[1]);
-    venta->descripcion = factura[2];
-    venta->precio_unidad = string_to_float(factura[3]);
-    venta->fecha = *fecha;
+    int codigo_vendedor = string_to_int(factura[0]);
+    int indice_vendedor = xxxxxxxx(codigo_vendedor, vendedores);
 
-    return *venta;
+    Venta venta;
+    venta.cantidad = string_to_int(factura[1]);
+    venta.descripcion = factura[2];
+    venta.precio_unidad = string_to_float(factura[3]);
+    venta.fecha = fecha;
+
+    vendedores[indice_vendedor].agregar_venta(venta);
 }
 
-std::vector<Venta> leer_ventas(std::string nombre) {
-    std::vector<Venta> contenidos;
-    std::string valor;
+void leer_ventas(std::vector<Vendedor>& vendedores, std::string nombre) {
+    std::string linea;
     char separador = '\t';
 
     std::ifstream archivo(nombre);
-    while(getline(archivo, valor)) {
-        Venta venta = leer_una_venta(valor);
-        contenidos.push_back(venta);
+    while(getline(archivo, linea)) {
+        leer_y_registrar_venta(linea, vendedores);
+    }
+}
+
+bool ordenar_por_codigo_vendedor(Vendedor vendedor1, Vendedor vendedor2) {
+    return vendedor1.codigo > vendedor2.codigo;
+}
+
+float total_general(std::vector<Vendedor>& vendedores) {
+    float total = 0;
+    for (int i = 0; i < vendedores.size(); i++) {
+        total += vendedores[i].total_ventas();
+    }
+    return total;
+}
+
+int codigo_vendedor_mayor_venta(std::vector<Vendedor>& vendedores) {
+    float vendedor_mayor_venta[2] = {0, 0};
+
+    for (int i = 0; i < vendedores.size(); i++) {
+        float total_ventas = vendedores[i].total_ventas();
+        if (total_ventas > vendedor_mayor_venta[0]) {
+            vendedor_mayor_venta[0] = total_ventas;
+            vendedor_mayor_venta[1] = vendedores[i].codigo;
+        }
     }
 
-    return contenidos;
+    return vendedor_mayor_venta[1];
 }
 
 int main()
@@ -42,12 +69,18 @@ int main()
     const int MAX_REGS = 800;
     const int MAX_VENS = 100;
 
-    Vendedor tito;
-    tito.codigo = 123;
-    std::vector<Venta> ventas = leer_ventas("VentasFerreteria.txt");
-    ventas[0].print();
-    std::cout << "\n\n";
-    ventas[1].print();
+    std::vector<Vendedor> vendedores;
+    leer_ventas(vendedores, "./VentasFerreteria.txt");
+
+    std::sort(vendedores.begin(), vendedores.end(), ordenar_por_codigo_vendedor);
+
+    for (int i = 0; i < vendedores.size(); i++) {
+        std::cout << vendedores[i].generar_listado() << std::endl;
+    }
+
+    std::cout << std::setw(92) << std::left << "Total General:" << std::right << "$" << total_general(vendedores) << std::endl;
+    std::cout << "Código del vendedor con mayor ventas: " << codigo_vendedor_mayor_venta(vendedores) << std::endl;
+
     return 0;
 }
 

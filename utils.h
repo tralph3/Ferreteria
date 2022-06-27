@@ -1,6 +1,7 @@
 #ifndef _UTILS_H
 #define _UTILS_H
 
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -11,5 +12,7 @@ int string_to_int(const std::string& string);
 void split_string(
     std::string string, std::vector<std::string>& vector, char separator
 );
+
+void generar_cabecera(std::stringstream& stream);
 
 #endif
