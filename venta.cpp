@@ -13,7 +13,7 @@ float Venta::precio_total() {
 }
 
 void Venta::generar_entrada_en_listado(std::stringstream& stream) {
-    stream << std::setw(12) << std::left << fecha;
+    stream << std::setw(12) << std::left << fecha.to_string();
     stream << std::setw(10) << std::left << cantidad;
     stream << std::setw(25) << std::left << descripcion;
     stream << std::setw(20) << std::left << precio_unidad;

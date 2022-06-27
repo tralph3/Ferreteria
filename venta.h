@@ -9,7 +9,11 @@ struct Fecha {
     short mes;
     int ano;
 
-    friend std::ostream& operator <<(std::stringstream& stream, const Fecha& fecha);
+    std::string to_string() {
+        std::stringstream stream;
+        stream << dia << "/" << mes << "/" << ano;
+        return stream.str();
+    }
 };
 
 struct Venta {
@@ -22,5 +26,7 @@ struct Venta {
 
     void generar_entrada_en_listado(std::stringstream& stream);
 };
+
+std::ostream& operator <<(std::stringstream& stream, const Fecha& fecha);
 
 #endif
