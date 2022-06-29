@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <bits/stdc++.h>
+#include <algorithm>
 #include "utils.h"
 #include "vendedor.h"
 #include "venta.h"

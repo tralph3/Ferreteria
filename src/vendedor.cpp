@@ -88,7 +88,7 @@ void leer_y_registrar_venta(std::string linea, std::vector<Vendedor>& vendedores
     vendedores[indice_vendedor].agregar_venta(venta);
 }
 
-void leer_ventas(std::vector<Vendedor>& vendedores, std::string nombre) {
+void leer_ventas(std::vector<Vendedor>& vendedores, const char* nombre) {
     std::string linea;
 
     std::ifstream archivo(nombre);

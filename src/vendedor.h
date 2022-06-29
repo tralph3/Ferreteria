@@ -28,7 +28,7 @@ int xxxxxxxx(int id, std::vector<Vendedor>& vendedores);
 
 void leer_y_registrar_venta(std::string linea, std::vector<Vendedor>& vendedores);
 
-void leer_ventas(std::vector<Vendedor>& vendedores, std::string nombre);
+void leer_ventas(std::vector<Vendedor>& vendedores, const char* nombre);
 
 bool ordenar_vendedores_por_codigo(Vendedor vendedor1, Vendedor vendedor2);
 
