@@ -10,8 +10,8 @@ std::string Vendedor::generar_listado_1() {
 
     listado << "Código de Vendedor: " << codigo << std::endl;
     generar_cabecera(listado);
-    for (int i = 0; i < ventas.size(); i++) {
-        listado << std::setw(10) << std::left << i + 1;
+    for (size_t i = 0; i < ventas.size(); i++) {
+        listado << std::setw(10) << std::left << (i + 1);
         ventas[i].generar_entrada_en_listado(listado);
         listado << std::endl;
     }
@@ -41,7 +41,7 @@ std::string Vendedor::generar_listado_3() {
 
 float Vendedor::total_ventas() {
     float total = 0;
-    for(int i = 0; i < ventas.size(); i++) {
+    for(size_t i = 0; i < ventas.size(); i++) {
         total += ventas[i].precio_total();
     }
 
@@ -50,18 +50,19 @@ float Vendedor::total_ventas() {
 
 int Vendedor::cantidad_total() {
     int total = 0;
-    for (int i = 0; i < ventas.size(); i++) {
+    for (size_t i = 0; i < ventas.size(); i++) {
         total += ventas[i].cantidad;
     }
     return total;
 }
 
 int xxxxxxxx(int id, std::vector<Vendedor>& vendedores) {
-    for (int i = 0; i < vendedores.size(); i++) {
+    for (size_t i = 0; i < vendedores.size(); i++) {
         if (id == vendedores[i].codigo)
             return i;
     }
-    Vendedor vendedor = { id };
+    Vendedor vendedor;
+    vendedor.codigo = id;
     vendedores.push_back(vendedor);
     return vendedores.size() - 1;
 }
@@ -110,7 +111,7 @@ bool ordenar_vendedores_por_total_ventas(Vendedor vendedor1, Vendedor vendedor2)
 
 float total_general(std::vector<Vendedor>& vendedores) {
     float total = 0;
-    for (int i = 0; i < vendedores.size(); i++) {
+    for (size_t i = 0; i < vendedores.size(); i++) {
         total += vendedores[i].total_ventas();
     }
     return total;
@@ -119,7 +120,7 @@ float total_general(std::vector<Vendedor>& vendedores) {
 int codigo_vendedor_mayor_venta(std::vector<Vendedor>& vendedores) {
     float vendedor_mayor_venta[2] = {0, 0};
 
-    for (int i = 0; i < vendedores.size(); i++) {
+    for (size_t i = 0; i < vendedores.size(); i++) {
         float total_ventas = vendedores[i].total_ventas();
         if (total_ventas > vendedor_mayor_venta[0]) {
             vendedor_mayor_venta[0] = total_ventas;

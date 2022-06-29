@@ -8,7 +8,7 @@ void split_string(
     std::string string, std::vector<std::string>& vector, char separator
 ) {
     std::string temp = "";
-    for(int i = 0; i < string.length(); i++){
+    for(size_t i = 0; i < string.length(); i++){
         if (string[i] == separator) {
             vector.push_back(temp);
             temp = "";

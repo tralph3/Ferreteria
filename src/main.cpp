@@ -23,7 +23,7 @@ void lista_1(std::vector<Vendedor>& vendedores) {
         vendedores.begin(), vendedores.end(), ordenar_vendedores_por_codigo
     );
 
-    for (int i = 0; i < vendedores.size(); i++) {
+    for (size_t i = 0; i < vendedores.size(); i++) {
         std::cout << vendedores[i].generar_listado_1() << std::endl;
     }
 
@@ -41,7 +41,7 @@ void lista_2(std::vector<Vendedor>& vendedores) {
         vendedores.begin(), vendedores.end(), ordenar_vendedores_por_cantidad_articulos
     );
 
-    for (int i = 0; i < vendedores.size(); i++) {
+    for (size_t i = 0; i < vendedores.size(); i++) {
         std::cout << vendedores[i].generar_listado_2() << std::endl;
     }
 }
@@ -55,7 +55,7 @@ void lista_3(std::vector<Vendedor>& vendedores) {
         vendedores.begin(), vendedores.end(), ordenar_vendedores_por_total_ventas
     );
 
-    for (int i = 0; i < vendedores.size(); i++) {
+    for (size_t i = 0; i < vendedores.size(); i++) {
         std::cout << vendedores[i].generar_listado_3() << std::endl;
     }
 }
