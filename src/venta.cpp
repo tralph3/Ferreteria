@@ -3,11 +3,6 @@
 #include <iomanip>
 #include "venta.h"
 
-std::ostream& operator <<(std::ostream& stream, const Fecha& fecha) {
-    stream << fecha.dia << "/" << fecha.mes << "/" << fecha.ano;
-    return stream;
-}
-
 float Venta::precio_total() {
     return cantidad * precio_unidad;
 }

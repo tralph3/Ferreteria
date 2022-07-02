@@ -3,18 +3,7 @@
 
 #include <iostream>
 #include <sstream>
-
-struct Fecha {
-    short dia;
-    short mes;
-    int ano;
-
-    std::string to_string() {
-        std::stringstream stream;
-        stream << dia << "/" << mes << "/" << ano;
-        return stream.str();
-    }
-};
+#include "fecha.h"
 
 struct Venta {
     int cantidad;
@@ -26,7 +15,5 @@ struct Venta {
 
     void generar_entrada_en_listado(std::stringstream& stream);
 };
-
-std::ostream& operator <<(std::stringstream& stream, const Fecha& fecha);
 
 #endif
