@@ -1,8 +1,9 @@
+#include <fstream>
+#include <iomanip>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include <iomanip>
 
 void split_string(
     std::string string, std::vector<std::string>& vector, char separator
@@ -25,7 +26,7 @@ int string_to_int(const std::string& string) {
     int num;
     if((str >> num).fail())
     {
-        throw std::invalid_argument("Cant parse to int");
+        throw std::invalid_argument("Can\'t parse to int");
     }
     return num;
 }
@@ -35,18 +36,19 @@ float string_to_float(const std::string& string) {
     float num;
     if((str >> num).fail())
     {
-        throw std::invalid_argument("Cant parse to float");
+        throw std::invalid_argument("Can\'t parse to float");
     }
     return num;
 }
 
-void generar_cabecera(std::stringstream& stream) {
-    stream << std::setw(10) << std::left << "#Item";
-    stream << std::setw(12) << std::left << "Fecha";
-    stream << std::setw(10) << std::left << "Cantidad";
-    stream << std::setw(25) << std::left << "Descripcion";
-    stream << std::setw(20) << std::left << "Precio por Unidad";
-    stream << std::setw(15) << std::left << "Total Item";
-    stream << std::setw(15) << std::left << "Total Venta";
-    stream << std::endl;
+std::string float_to_string(float x) {
+    std::stringstream stream;
+    stream.imbue(std::locale(""));
+    stream << std::fixed << std::setprecision(2) << x;
+    return stream.str();
+}
+
+void write_to_file(std::string file_name, std::string contents) {
+    std::ofstream file(file_name);
+    file << contents;
 }

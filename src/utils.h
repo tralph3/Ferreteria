@@ -1,18 +1,17 @@
 #ifndef _UTILS_H
 #define _UTILS_H
 
-#include <sstream>
-#include <string>
 #include <vector>
+#include <string>
 
-float string_to_float(const std::string& string);
+float string_to_float(const std::string&);
 
-int string_to_int(const std::string& string);
+int string_to_int(const std::string&);
 
-void split_string(
-    std::string string, std::vector<std::string>& vector, char separator
-);
+void split_string(std::string, std::vector<std::string>&, char);
 
-void generar_cabecera(std::stringstream& stream);
+std::string float_to_string(float);
+
+void write_to_file(std::string, std::string);
 
 #endif
