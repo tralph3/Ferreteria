@@ -48,7 +48,13 @@ std::string float_to_string(float x) {
     return stream.str();
 }
 
+std::string int_to_string(int x) {
+    std::stringstream stream;
+    stream << x;
+    return stream.str();
+}
+
 void write_to_file(std::string file_name, std::string contents) {
-    std::ofstream file(file_name);
+    std::ofstream file(file_name.c_str());
     file << contents;
 }

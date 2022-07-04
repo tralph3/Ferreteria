@@ -12,6 +12,8 @@ void split_string(std::string, std::vector<std::string>&, char);
 
 std::string float_to_string(float);
 
+std::string int_to_string(int);
+
 void write_to_file(std::string, std::string);
 
 #endif

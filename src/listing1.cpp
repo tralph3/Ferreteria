@@ -10,15 +10,14 @@
 
 
 std::string Listing1::make_header() {
-    std::vector<std::string> header = {
-        "#Item",
-        "Fecha",
-        "Cantidad",
-        "Descripcion",
-        "Precio por Unidad",
-        "Total Item",
-        "Total Venta"
-    };
+    std::vector<std::string> header;
+    header.push_back("#Item");
+    header.push_back("Fecha");
+    header.push_back("Cantidad");
+    header.push_back("Descripcion");
+    header.push_back("Precio por Unidad");
+    header.push_back("Total Item");
+    header.push_back("Total Venta");
     return make_entry(header);
 }
 
@@ -46,9 +45,9 @@ std::string Listing1::make_listing(std::vector<Seller>& sellers) {
         stream << make_header();
         std::vector<Sale>& sales = sellers[i].get_sales();
         for (size_t j = 0; j < sales.size(); j++) {
-            values.push_back(std::to_string(j + 1));
+            values.push_back(int_to_string(j + 1));
             values.push_back(sales[j].date.to_string());
-            values.push_back(std::to_string(sales[j].amount));
+            values.push_back(int_to_string(sales[j].amount));
             values.push_back(sales[j].description);
             values.push_back("$" + float_to_string(sales[j].unit_price));
             values.push_back("$" + float_to_string(sales[j].total_price()));

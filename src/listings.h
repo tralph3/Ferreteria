@@ -7,7 +7,7 @@
 
 struct Listing {
     std::vector<unsigned char> column_sizes;
-    unsigned char column_number = column_sizes.size();
+    unsigned char column_number;
 
     virtual std::string make_header() = 0;
 
@@ -27,7 +27,13 @@ private:
 
 public:
     Listing1() {
-        column_sizes = {10, 15, 12, 25, 20, 15, 15};
+        column_sizes.push_back(10);
+        column_sizes.push_back(15);
+        column_sizes.push_back(12);
+        column_sizes.push_back(25);
+        column_sizes.push_back(20);
+        column_sizes.push_back(15);
+        column_sizes.push_back(15);
         column_number = column_sizes.size();
     }
 
@@ -40,7 +46,8 @@ private:
 
 public:
     Listing2() {
-        column_sizes = {25, 20};
+        column_sizes.push_back(25);
+        column_sizes.push_back(20);
         column_number = column_sizes.size();
     }
 
@@ -53,7 +60,8 @@ private:
 
 public:
     Listing3() {
-        column_sizes = {25, 20};
+        column_sizes.push_back(25);
+        column_sizes.push_back(20);
         column_number = column_sizes.size();
     }
 
